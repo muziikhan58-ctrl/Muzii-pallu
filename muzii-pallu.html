@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muzii ❤️ Pallu</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    background: linear-gradient(135deg, #0b0006, #1b0f14);
+    color:#fff;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    flex-direction:column;
+    text-align:center;
+    font-family:"Poppins", sans-serif;
+}
+.page { display:none; animation:fade 1s ease-in-out; position:relative; }
+.page.active { display:block; }
+@keyframes fade { from {opacity:0; transform:scale(0.95);} to {opacity:1; transform:scale(1);} }
+
+h1 { font-family:"Great Vibes", cursive; font-size:50px; font-weight:400; margin-bottom:15px; letter-spacing:1px; position:relative; }
+
+#page1 h1 {
+    background: linear-gradient(45deg,#ff66b2,#a64aff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 0 25px rgba(255,102,178,0.5),0 0 40px rgba(166,74,255,0.4);
+}
+.sparkle { position:absolute; width:6px; height:6px; background:#fff; border-radius:50%; opacity:0; pointer-events:none; animation:sparkleAnim 1.5s linear infinite; }
+@keyframes sparkleAnim { 0% { transform:translate(0,0) scale(0); opacity:0; } 50% { transform:translate(var(--x),var(--y)) scale(1); opacity:1; } 100% { transform:translate(var(--x),var(--y)) scale(0); opacity:0; } }
+
+#page2 .top-text, #page2 .bottom-text { color:#fff; margin-bottom:10px; font-size:28px; }
+#counter { font-size:40px; margin-bottom:15px; color:#fff; }
+
+#page3 h1 { font-family:"Poppins", sans-serif; font-size:20px; line-height:1.6; color:#fff; }
+#page3 .emoji-center { font-size:32px; margin:15px 0; }
+
+#page4 h1 { font-family:"Poppins", sans-serif; font-size:28px; line-height:1.5; color:#fff; }
+
+#page5 h1 { font-family:"Poppins", sans-serif; font-size:20px; line-height:1.6; color:#fff; }
+
+#page6 h1 {
+    font-family:"Great Vibes", cursive;
+    font-size:50px;
+    font-weight:400;
+    background: linear-gradient(45deg,#ff66b2,#a64aff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 0 25px rgba(255,102,178,0.5),0 0 40px rgba(166,74,255,0.4);
+}
+
+button {
+    border:none; padding:12px 35px; border-radius:50px; color:white; font-size:18px; font-weight:600; font-family:"Poppins",sans-serif; cursor:pointer; box-shadow:0 0 25px rgba(255,100,200,0.7); transition:0.3s;
+}
+button:hover { transform:scale(1.08); box-shadow:0 0 40px rgba(255,100,200,1); }
+
+#page1 button { background: linear-gradient(90deg, #a64aff, #ff66b2); }
+#page2 button { background: linear-gradient(45deg, #ff66b2, #a64aff); }
+#page3 button { background: linear-gradient(45deg, #ff9933, #ff66b2); }
+#page4 button { background: linear-gradient(45deg, #3498db, #2ecc71); }
+#page5 button { background: linear-gradient(90deg, #a64aff, #ff66b2); }
+#page6 button { background: linear-gradient(90deg, #a64aff, #ff66b2); }
+</style>
+</head>
+<body>
+
+<!-- Page 1 -->
+<div id="page1" class="page active">
+    <h1>Muzii ke Jan 💕</h1>
+    <p>Do you even know how much I miss you?</p>
+    <button onclick="nextPage()">Open My Heart 💖</button>
+</div>
+
+<!-- Page 2 -->
+<div id="page2" class="page">
+    <div class="top-text">🥹 I miss you</div>
+    <div id="counter">1</div>
+    <div class="bottom-text">Times....and forever more</div>
+    <button onclick="nextPage()">Hear My Heart 💖</button>
+</div>
+
+<!-- Page 3 -->
+<div id="page3" class="page">
+    <h1>Meri piyari bivi I love uhhh. Every star in this endless sky whispers your name to me. The moon feels lonely without your radiant smile to complete its glow. Distance is just a number when you mean everything to my heart. You are my sunshine in the darkest nights. My anchor in the stormiest seas. I love you more than all the stars combined.</h1>
+    <div class="emoji-center">💕✨</div>
+    <button onclick="nextPage()">Our Memories 📷</button>
+</div>
+
+<!-- Page 4 -->
+<div id="page4" class="page">
+    <h1>This memories… They make me miss you even more</h1>
+    <button onclick="nextPage()">One Last Thing 💙💚</button>
+</div>
+
+<!-- Page 5 -->
+<div id="page5" class="page">
+    <h1>Forever yours. Even miles apart. Yours all I think about. Every second without you feels incomplete. I miss your smile. Your laugh. Your voice .... everything. You are my peace in this noisy world. No matter the distance. You'll always live in my heart. I can't wait for the day I hold you again. Until then. Just know.. I miss you more than words can ever say 🌙💖</h1>
+    <button onclick="nextPage()">More 😅</button>
+</div>
+
+<!-- Page 6 -->
+<div id="page6" class="page">
+    <h1>My Queen Pallu</h1>
+    <p>Muzii will always love you endlessly.</p>
+    <button onclick="replay()">Replay ♡</button>
+</div>
+
+<script>
+let currentPage = 1;
+const totalPages = 6;
+
+function nextPage() {
+    document.getElementById(`page${currentPage}`).classList.remove('active');
+    currentPage = currentPage === totalPages ? 1 : currentPage + 1;
+    document.getElementById(`page${currentPage}`).classList.add('active');
+    if(currentPage===2) startCounter();
+}
+
+function replay() {
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    currentPage=1;
+    document.getElementById('page1').classList.add('active');
+    document.getElementById('counter').textContent='1';
+}
+
+// Sparkles page1
+function createSparkle() {
+    const sparkle=document.createElement('div');
+    sparkle.className='sparkle';
+    const x=(Math.random()-0.5)*200+'px';
+    const y=(Math.random()-0.5)*200+'px';
+    sparkle.style.setProperty('--x',x);
+    sparkle.style.setProperty('--y',y);
+    document.getElementById('page1').appendChild(sparkle);
+    setTimeout(()=>sparkle.remove(),1500);
+}
+setInterval(()=>{if(currentPage===1) createSparkle();},200);
+
+// Counter 1 to 100
+function startCounter(){
+    let count=1;
+    const counterEl=document.getElementById('counter');
+    counterEl.textContent=count;
+    const interval=setInterval(()=>{
+        count++;
+        counterEl.textContent=count;
+        if(count>=100) clearInterval(interval);
+    },100);
+}
+</script>
+
+</body>
+</html>
